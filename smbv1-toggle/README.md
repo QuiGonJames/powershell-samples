@@ -7,7 +7,7 @@ my files and don't want to deal with copying over the terabytes of data to a new
 
 This script is something I put together so I can quickly toggle enabling this protocol when I need to access the drive and disabling when I'm done.
 
-##A few notes:
+## A few notes:
 
 - This script checks the current state and then prompts whether you want to toggle it.
 - If it is **not** enabled and you choose to enable it, it first calls `Add-WindowsCapability`. See further notes below.
@@ -16,7 +16,7 @@ This script is something I put together so I can quickly toggle enabling this pr
   - _Caveat Emptor_, this is current as of 05/05/2020. MS may change the recommended configuration of LMWS. Check the latest recommended configuration.
  - If SMBv1 is enabled and you choose to disable it, it reverses the enable order and configures the services, then disables the parent feature. Since all items are to be disabled no need to call individual disables.
 
-##Why Add then Enable?
+## Why Add then Enable?
 This is because I found that Microsoft has changed the way this works a few times. Originally, you could just enable the feature through `sc.exe` and configure LMWS. But this changed to requiring to setting the features. Then (and I could be wrong, I didn't spend a lot of time finding out why), it seems that an update forced the removal of the feature.
 
 In any case, `Add-WindowsCapability` ensures the feature exists in case it has been removed as `Enable-WindowsOptionalFeature` will fail if it does not exist.
