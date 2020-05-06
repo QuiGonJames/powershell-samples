@@ -8,7 +8,6 @@ my files and don't want to deal with copying over the terabytes of data to a new
 This script is something I put together so I can quickly toggle enabling this protocol when I need to access the drive and disabling when I'm done.
 
 ## A few notes:
-
 - This script checks the current state and then prompts whether you want to toggle it.
 - If it is **not** enabled and you choose to enable it, it first calls `Add-WindowsCapability`. See further notes below.
  - It then enables the parent feature using `Enable-WindowsOptionalFeature` followed by disabling the children features not needed by calling `Disable-WindowsOptionalFeature`. See further notes below.
